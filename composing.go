@@ -28,7 +28,7 @@ type Admin struct {
 // Unlock Gate method adding the UnlockGate receiver
 //func (s *MyStruct) pointerMethod() { } // method on pointer. Will affect the receiver
 //func (s MyStruct)  valueMethod()   { } // method on value. Will not affect the receiver, and respects the immutable nature of the object (it gets a copy)
-// this method has the same signature [UnlockGate() bool] specified by the Role interface, golang infers this is then a Role
+// this method has the same signature [UnlockGate() bool] specified by the Role interface, as a result golang infers this is then a Role
 func (a *Admin) unlockGate() bool {
   a.entries++
 	fmt.Printf("unlocking gate as %s\n", a.Name)
@@ -42,7 +42,7 @@ func unlock(r Role) {
 
 func main() {
 
-	//using pointer makes it cheap (method will not create a new receiver, but will use the pointer); and allowing it to modify the original object.
+	//using pointer makes it cheap (method will not create a new receiver, but will use the pointer); and allowing it to modify the original object. (TEST this)
 	b := &Admin{&User{"Pancho"}, "administrator", "pa$$word", 0}
 	b.sayName("Roberto")
 
